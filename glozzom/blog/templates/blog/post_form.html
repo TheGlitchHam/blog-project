@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1>New Post</h1>
+    <form class="post-form mt-5" action="" method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="">{{form.author.html_name|capfirst}}</label>
+            <br>
+            <select name="{{ form.author.html_name }}" id="{{ form.author.id_for_label }}">
+                {% for option in form.author %}
+                {{option}}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="{{form.title.html_name}}">{{form.title.html_name|capfirst}}</label>
+            <input class="form-control" type="{{ form.title.field.widget.input_type}}"
+                id="{{ form.title.id_for_label }}" maxlength="30" name="{{ form.title.html_name }}" />
+            {{ field.errors }}
+        </div>
+        <div class="form-group">
+            <label for="{{form.text.html_name}}">{{form.text.html_name|capfirst}}</label>
+            <input class="form-control" type="{{ form.text.field.widget.input_type}}" id="{{ form.text.id_for_label }}"
+                maxlength="30" name="{{ form.text.html_name }}" />
+            {{ field.errors }}
+        </div>
+
+        <button type="submit" class="save btn btn-primary" name="submitform">Submit</button>
+
+    </form>
+
+</div>
+{% endblock  %}

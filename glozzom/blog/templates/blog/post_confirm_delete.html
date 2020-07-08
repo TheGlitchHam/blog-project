@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div>
+
+    <form method="post">
+        <p>Are you sure you want to delete {{ object }} </p>
+        <button class="btn btn-danger" type="submit">Delete Post</button>
+        <a class="btn btn-secondary" href="{% url 'basic_app:detail' pk=school.pk %}">Cancel</a>
+    </form>
+
+</div>
+{% endblock  %}
